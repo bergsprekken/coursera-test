@@ -3,7 +3,11 @@
 
 angular.module('LunchCheck', [])
 
-.controller('LunchCheckController', function ($scope) {
+.controller('LunchCheckController', LunchCheckController);
+
+LunchCheckController.$inject = ['$scope'];
+
+function LunchCheckController($scope) {
 
   $scope.dishlist = "";
   $scope.message = "";
@@ -19,12 +23,12 @@ angular.module('LunchCheck', [])
       tmpMessage = createMessageResult(totalDishes);
     }
     $scope.message = tmpMessage;
-  }
+  };
 
   function calculateDishNumber(string) {
     var dishStringArray = string.split(",");
     return dishStringArray.length;
-  }
+  };
 
   function createMessageResult(number) {
     if(number <= 3) {
@@ -33,9 +37,9 @@ angular.module('LunchCheck', [])
     else {
       return "Too much!";
     }
-  }
+  };
 
-});
+};
 
 
 
